@@ -52,11 +52,11 @@ class signup extends Component {
       errors: {}
     };
   }
-  /*componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
-  }*/
+  }
   handleSubmit = event => {
     event.preventDefault();
     this.setState({
@@ -68,7 +68,7 @@ class signup extends Component {
       confirmPassword: this.state.confirmPassword,
       handle: this.state.handle
     };
-    signupUser(newUserData, this.props.history);
+    this.props.signupUser(newUserData, this.props.history);
   };
   handleChange = event => {
     this.setState({
@@ -183,4 +183,6 @@ signup.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, { signup })(withStyles(styles)(signup));
+export default connect(mapStateToProps, { signupUser })(
+  withStyles(styles)(signup)
+);
